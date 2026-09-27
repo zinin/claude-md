@@ -1,0 +1,14 @@
+{
+  "name": "claude-md",
+  "version": "0.16.0",
+  "displayName": "CLAUDE.md Writer",
+  "description": "Write and refactor CLAUDE.md files: size budgets, the CLAUDE.md → .claude/rules/ → co-located layout, paths: frontmatter for conditional loading, a quality checklist",
+  "author": {
+    "name": "Alexander V. Zinin",
+    "email": "azinin@gmail.com",
+    "url": "https://github.com/zinin"
+  },
+  "repository": "https://github.com/zinin/claude-md",
+  "license": "MIT",
+  "keywords": ["agent-skills", "claude-md", "documentation", "rules", "memory"]
+}
