@@ -43,6 +43,10 @@ class CodexSectionTest(unittest.TestCase):
     def test_codex_section_requires_reading_rules_by_hand(self):
         self.assertIn(RULES_SENTENCE, self.section)
 
+    def test_codex_section_requires_reading_all_unscoped_rules(self):
+        self.assertIn("read all rules without `paths:`", self.section)
+        self.assertIn("rules whose `paths:` globs match it", self.section)
+
     def test_codex_section_explains_agents_md_precedence(self):
         self.assertIn(PRECEDENCE_SENTENCE, self.section)
 

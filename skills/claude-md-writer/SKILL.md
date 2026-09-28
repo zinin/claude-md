@@ -244,8 +244,9 @@ project_doc_fallback_filenames = ["CLAUDE.md"]
   `CLAUDE.md` or keep the two in step.
 - Codex walks from the repository root (the nearest `.git`) down to the working directory.
   Files above the repository root are not read, unlike in Claude Code.
-- Codex does not load `.claude/rules/` on its own. Before editing a file, read the rules whose
-  `paths:` globs match it; `paths:` still scopes the rules for Claude Code.
+- Codex does not load `.claude/rules/` on its own. Before editing a file, read all rules without
+  `paths:`, plus the rules whose `paths:` globs match it; `paths:` still scopes the rules for
+  Claude Code.
 - Project docs share a 32 KiB budget (`project_doc_max_bytes`) — one more reason to keep
   `CLAUDE.md` short.
 
@@ -335,4 +336,5 @@ managed-policy paths; `@imports` no longer presented as a way to cut context; th
 system and the 500-line rule relabelled as community/heuristic rather than official; stale
 best-practices URL; plus auto memory, AGENTS.md, `claudeMdExcludes`, `/doctor`, glob budget
 and compaction behaviour; plus a Codex section — the CLAUDE.md fallback, AGENTS.md
-precedence and reading .claude/rules/ by hand.
+precedence and reading .claude/rules/ by hand — all rules without `paths:` plus those with
+matching `paths:` globs.
