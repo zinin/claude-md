@@ -230,6 +230,26 @@ Reference files instead of duplicating:
 Claude Code reads `CLAUDE.md`, not `AGENTS.md`. If the repo already has one, import it
 (`@AGENTS.md` on the first line, Claude-specific rules below) or symlink `CLAUDE.md` to it.
 
+### Codex
+
+Codex reads `AGENTS.md`. Invoke this skill there as `$claude-md:claude-md-writer`. For Codex to
+read `CLAUDE.md` in folders that have no `AGENTS.md`, add one line to `~/.codex/config.toml`:
+
+```toml
+project_doc_fallback_filenames = ["CLAUDE.md"]
+```
+
+- In each folder Codex takes the first of `AGENTS.override.md`, `AGENTS.md` and the fallback
+  names, so a folder with both files gives Codex only `AGENTS.md`. Point that file at
+  `CLAUDE.md` or keep the two in step.
+- Codex walks from the repository root (the nearest `.git`) down to the working directory.
+  Files above the repository root are not read, unlike in Claude Code.
+- Codex does not load `.claude/rules/` on its own. Before editing a file, read all rules without
+  `paths:`, plus the rules whose `paths:` globs match it; `paths:` still scopes the rules for
+  Claude Code.
+- Project docs share a 32 KiB budget (`project_doc_max_bytes`) — one more reason to keep
+  `CLAUDE.md` short.
+
 ### Monorepos
 
 `claudeMdExcludes` in `.claude/settings.local.json` skips other teams' files by glob:
@@ -297,13 +317,14 @@ Official:
 - code.claude.com/docs/en/memory (memory hierarchy, rules, `paths:` globs, auto memory)
 - code.claude.com/docs/en/best-practices (was anthropic.com/engineering/claude-code-best-practices)
 - claude.com/blog/using-claude-md-files (Nov 2025 — predates the "context, not system prompt" clarification)
+- github.com/openai/codex — docs/agents_md.md (AGENTS.md discovery, project_doc_fallback_filenames, project_doc_max_bytes)
 
 Community:
 - thedocumentation.org/claude-code-development-kit (3-Tier System)
 - claudefa.st/blog/guide/mechanics/rules-directory
 - humanlayer.dev/blog/writing-a-good-claude-md
 
-Updated: Aug 2026 — checked against the docs above and Claude Code 2.1.226.
+Updated: Sep 2026 — checked against the docs above and Claude Code 2.1.226; the Codex section against Codex CLI 0.157.1.
 
 ---
 
@@ -314,4 +335,6 @@ auto-gitignored; memory hierarchy rebuilt in documented load order with the Linu
 managed-policy paths; `@imports` no longer presented as a way to cut context; the 3-Tier
 system and the 500-line rule relabelled as community/heuristic rather than official; stale
 best-practices URL; plus auto memory, AGENTS.md, `claudeMdExcludes`, `/doctor`, glob budget
-and compaction behaviour.
+and compaction behaviour; plus a Codex section — the CLAUDE.md fallback, AGENTS.md
+precedence and reading .claude/rules/ by hand — all rules without `paths:` plus those with
+matching `paths:` globs.

@@ -6,7 +6,9 @@ loading, a quality checklist. One skill, `/claude-md:claude-md-writer`. Split ou
 claude-mesh 0.15.0.
 
 The skill is about Claude Code's memory files; Grok reads `CLAUDE.md` too. Codex reads
-`AGENTS.md`, so the plugin installs there but has little to do.
+`AGENTS.md`; with `project_doc_fallback_filenames = ["CLAUDE.md"]` in `~/.codex/config.toml`
+it falls back to `CLAUDE.md`, and `.claude/rules/` are read by hand — the skill's Codex
+section explains both.
 
 ## Install
 
