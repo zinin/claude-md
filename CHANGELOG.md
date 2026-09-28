@@ -2,7 +2,7 @@
 
 All notable changes to claude-md will be documented here.
 
-## [Unreleased]
+## [0.17.0] - 2026-09-28
 
 ### Added
 - **Codex section in `claude-md-writer`.** How Codex reads `CLAUDE.md` through

@@ -1,6 +1,6 @@
 {
   "name": "claude-md",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "displayName": "CLAUDE.md Writer",
   "description": "Write and refactor CLAUDE.md files: size budgets, the CLAUDE.md → .claude/rules/ → co-located layout, paths: frontmatter for conditional loading, a quality checklist",
   "author": {
